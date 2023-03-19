@@ -5,11 +5,12 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Customer, Employee, Order
+from dashboard.models import Customer, Employee, Order
 
 
 def index(request):
     return render(request, 'base.html')
+
 
 class CustomerListView(ListView):
     model = Customer
@@ -23,8 +24,6 @@ class CustomerDetailView(DetailView):
     slug_url_kwarg = 'id'
     success_url = reverse_lazy('customer-list')
     
-
-
  
 class CustomerCreateView(CreateView):
     model = Customer
@@ -39,7 +38,6 @@ class CustomerCreateView(CreateView):
     success_url = reverse_lazy('customer-list')
 
     
- 
 class CustomerUpdateView(UpdateView):
     model = Customer
     template_name = 'customer_edit.html'
@@ -56,7 +54,6 @@ class CustomerDeleteView(DeleteView):
     model = Customer
     template_name = 'customer_delete.html'
     success_url = reverse_lazy('customer_list.html')
-
 
 
 class EmployeeListView(ListView):
